@@ -1,7 +1,10 @@
 .env
-data/
+data/*
+!data/photos.json
+!data/lego-photo-overrides.json
 node_modules/
 *.sqlite*
 .DS_Store
 .playwright-cli/
 output/
+__pycache__/
