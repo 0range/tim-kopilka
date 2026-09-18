@@ -26,4 +26,4 @@ details and earnings, scoped CSS for larger controls, and backward-compatible sa
 - [x] Update README and in-game rules; increment `CACHE` in `sw.js`.
 - [x] Check layout, large images, updated rewards, cancelled/confirmed sales,
   reload, older saves and reset through Playwright in Chromium and WebKit.
-- [ ] Review the diff, commit, push, wait for Pages and verify the live interface.
+- [x] Review the diff, commit, push, wait for Pages and verify the live interface.
