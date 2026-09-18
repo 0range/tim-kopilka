@@ -21,4 +21,4 @@ manifest, and cache photos on demand through the service worker.
 - [x] Keep optional HTML backups playable offline with embedded covers; use published URLs for extras.
 - [x] Update in-game instructions, README, photo credits and service-worker version.
 - [x] Verify layouts and gallery/purchase/save behavior in Chromium and WebKit.
-- [ ] Publish and verify the same behavior and local photo URLs on GitHub Pages.
+- [x] Publish and verify the same behavior and local photo URLs on GitHub Pages.
