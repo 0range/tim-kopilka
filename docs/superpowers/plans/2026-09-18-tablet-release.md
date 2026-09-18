@@ -42,3 +42,9 @@ localStorage; export/import standalone HTML backups.
 - [ ] Check `git diff --check`, inspect the publish set, commit and push to `main`.
 - [ ] Enable Pages via `gh api` with `source[branch]=main`, `source[path]=/`.
 - [ ] Wait for the build, then verify HTTP 200 and saving/reset on the live URL.
+
+## 4. Home screen launch (user clarification)
+
+- [ ] Add manifest with relative scope/start URL, standalone display and PNG icons.
+- [ ] Register `sw.js` only for the hosted game; cache the shell for offline reopening.
+- [ ] Verify the manifest and offline reload in Chromium and WebKit, plus the live subpath.

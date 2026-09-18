@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "Тим · Моя копилка",
+  "short_name": "Копилка",
+  "description": "Игра про накопления, заработок и выбор наборов LEGO",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f6ed",
+  "theme_color": "#267254",
+  "icons": [
+    { "src": "icons/coin-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/coin-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
