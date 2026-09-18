@@ -1,7 +1,7 @@
 'use strict';
 
 // Bump the version when changing the shell or icons. Game saves live in localStorage.
-const CACHE = 'tim-kopilka-shell-v1';
+const CACHE = 'tim-kopilka-shell-v2';
 const SHELL = new URL('index.html', self.registration.scope).href;
 const ASSETS = ['index.html', 'manifest.webmanifest', 'icons/coin-192.png',
   'icons/coin-512.png', 'icons/apple-touch-icon.png'];

@@ -18,12 +18,57 @@
 @media(max-width:699px){.time-actions{width:100%}.time-actions button{flex:1;white-space:normal!important}.advance #next{width:auto}.jobs button{font-size:16px}.jobs button strong{font-size:16px}}
 @media(min-width:700px) and (max-height:700px) and (orientation:landscape){.advance{gap:8px}.advance h2{font-size:16px}.advance .weekly{font-size:13px}.advance .time-actions button{padding:10px;font-size:16px}}
 @media(min-width:700px) and (orientation:portrait) and (max-height:1050px){.toy .setgoal{display:none}.toy button.preview{min-height:50px}.toy h3{font-size:16px;min-height:38px}.toy .price{font-size:22px}}
+
+/* Large tablet controls and full-size product previews. */
+.advance{display:grid;grid-template-columns:minmax(165px,.8fr) minmax(165px,.8fr) minmax(0,2.7fr);gap:14px;padding:14px;min-height:108px;flex-shrink:0}
+.advance h2{font-size:20px;font-weight:600;line-height:1.2;color:var(--muted)}
+.advance .weekly{font-size:32px;line-height:1.2;font-weight:800;color:var(--ink);margin-top:4px}
+.advance .secondary-actions{order:0;max-width:none}
+.advance #earn{width:100%;min-height:76px;font-size:22px;font-weight:700;padding:12px;line-height:1.2}
+.advance .time-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;grid-column:auto;width:100%}
+.advance .time-actions button,.advance #next{font-size:24px;min-height:76px;min-width:0;width:auto;white-space:normal;padding:14px 12px;line-height:1.2}
+#story.detail-dialog{width:min(920px,calc(100% - 24px))}
+#story.detail-dialog #story-icon{display:none}
+.detail-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;align-items:center;margin-top:18px}
+.detail-photo{height:min(48dvh,420px);min-height:240px;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.detail-photo .photo{width:100%;height:100%;max-height:none;min-height:0;flex:none;padding:16px;object-fit:contain}
+.detail-copy{min-width:0}.detail-copy p{font-size:27px;line-height:1.25;margin:0 0 16px}.detail-copy .small{font-size:16px!important}
+#story.detail-dialog .dialog-buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#story.detail-dialog .dialog-buttons button{min-height:60px}
+#story.earnings-dialog{width:min(840px,calc(100% - 24px))}
+.earning-groups{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px}
+.earning-groups .sales-hint{font-size:15px;line-height:1.35;color:var(--muted);margin:0 0 12px}
+.earning-groups h3{font-size:21px;margin:0 0 12px}
+.earning-groups .jobs{margin-top:0}
+.earning-groups .jobs button{font-size:21px;min-height:104px;padding:14px;line-height:1.25}
+.earning-groups .jobs button small{font-size:14px;line-height:1.25;margin-top:8px}
+.earning-groups .jobs button strong{font-size:22px}
+#story.earnings-dialog .small{font-size:17px!important}
+@media(min-width:700px) and (orientation:portrait){
+ .advance{grid-template-columns:1fr 1fr}.advance .time-actions{grid-column:1/-1}
+ .advance .secondary-actions{justify-content:stretch}.advance #earn{min-height:64px}
+}
+@media(min-width:700px) and (max-height:700px) and (orientation:landscape){
+ .main{overflow:auto}#shop{height:auto;min-height:100%;flex-shrink:0}#cards{min-height:310px}
+ .advance{padding:10px;gap:10px;min-height:96px}.advance .weekly{font-size:30px}
+ .advance .time-actions button,.advance #next{font-size:22px;min-height:72px}
+ .advance #earn{min-height:72px;font-size:20px}
+}
+@media(min-width:700px) and (orientation:portrait) and (max-height:1050px){.footer{display:none}}
+@media(max-width:699px){
+ .advance{grid-template-columns:1fr 1fr;gap:12px;padding:12px}.advance h2{font-size:18px}
+ .advance .weekly{font-size:30px}.advance #earn{font-size:20px;min-height:64px}
+ .advance .time-actions{grid-column:1/-1}.advance .time-actions button,.advance #next{font-size:21px;min-height:76px}
+ .detail-layout{grid-template-columns:1fr;gap:16px}.detail-photo{height:min(40dvh,340px);min-height:220px}
+ .detail-copy p{font-size:24px}#story.detail-dialog .dialog-buttons{grid-template-columns:1fr}
+ .earning-groups{grid-template-columns:1fr;gap:24px}.earning-groups .jobs button{min-height:88px}
+}
 </style></head><body>
 <div class="wrap">
 <header class="topbar"><div class="identity"><div class="brand">МОЯ КОПИЛКА · ЧИТАЮ И ВЫБИРАЮ</div><h1 id="hello">Привет, Тим!</h1><div class="date-age"><span id="date"></span><span id="age"></span></div></div><div class="bank"><span class="ruble-coin" aria-label="Рублёвая монета">₽</span><div><div class="banklabel">В моей копилке</div><div class="money" id="balance" aria-live="polite"></div></div></div><button class="quiet" id="parent-open">Для папы ⚙</button></header>
 <div class="toolbar"><nav class="tabs" aria-label="Разделы игры"><button data-tab="shop" aria-pressed="true">Выбрать LEGO</button><button data-tab="shelf" aria-pressed="false" id="shelf-tab">Купленные наборы · 0</button><button data-tab="history" aria-pressed="false">История</button></nav></div>
 <main class="main"><section id="shop"><div class="sectionhead"><h2>Что я хочу?</h2><div class="browse"><button class="quiet" id="near-budget" hidden>К моей сумме</button><button class="quiet" id="other">Ещё наборы →</button></div></div><div id="cards" class="cards"></div><div id="goalbar" class="goalbar" hidden></div></section><section id="shelf" class="scrollpanel" hidden><h2>Купленные наборы</h2><div id="collection" class="cards shelf"></div></section><section id="history" class="scrollpanel" hidden><h2>Моя история</h2><div id="logs"></div></section></main>
-<section class="advance"><div><h2>Можно подождать</h2><div class="weekly" id="weekly-label">Каждую неделю: +300 ₽</div></div><div class="secondary-actions" id="extras"><button id="earn">Заработать денег</button></div><div class="time-actions"><button class="gold" id="next">Подождать неделю</button><button id="month">Подождать месяц</button></div></section>
+<section class="advance"><div><h2>Каждую неделю</h2><div class="weekly" id="weekly-label">+300 ₽</div></div><div class="secondary-actions" id="extras"><button id="earn">Заработать денег</button></div><div class="time-actions"><button class="gold" id="next">Подождать неделю</button><button id="month">Подождать месяц</button></div></section>
 <footer class="footer"><span id="save-status">Это игра. Деньги и покупки — понарошку.</span><div class="footer-actions"><button class="quiet" id="import-open">Загрузить игру</button><button class="quiet" id="download">Скачать мою игру ↓</button></div></footer><div id="save-warning" class="notice" role="alert" hidden>Нажми «Скачать мою игру», чтобы не потерять прогресс.</div><input type="file" id="import-file" accept=".html,text/html" hidden>
 </div>
 <dialog id="story" aria-labelledby="story-title"><div id="story-icon" class="dialog-icon" aria-hidden="true"></div><h2 id="story-title"></h2><div id="story-body"></div><div id="story-buttons" class="dialog-buttons"></div></dialog>
@@ -33,7 +78,7 @@
 <label class="check"><input type="checkbox" id="set-events">Подарки и случайные находки</label>
 <p class="small">Начальные настройки: Тим, дата рождения 7 февраля 2020, в копилке 1 800 ₽. Новая игра начинается в текущую дату по часам устройства. Возраст считается по игровой дате. Сохранённая игра продолжается с достигнутой даты.</p>
 <details><summary>Каталог и источники цен · 152 NINJAGO</summary><p>Снимок доступных страниц «Детского мира» и «Мира кубиков» от 13.09.2026. Для каждого набора используется цена «Детского мира». Если предложения этого набора там не найдено — цена «Мира кубиков». Цены не округлены. В «Детском мире» у разных продавцов могут быть разные предложения: выбрано самое дешёвое из найденных. Это сохранённые цены для игры, не гарантия текущей цены или наличия.</p><p>Все наборы доступны как цели для накопления с начала игры. «Ещё наборы» позволяет просмотреть весь каталог по пять за раз; «К моей сумме» возвращает подходящие по бюджету. Примерно раз в три недели появляется Harry Potter.</p><div id="catalog-settings"></div></details>
-<label class="check"><input type="checkbox" id="set-random">Редкая находка: 100 ₽ в старой куртке</label><details><summary>Правила событий и сохранение</summary><p>На обычной неделе начиная с третьей есть шанс 12% найти 100 ₽. Между находками — минимум четыре недели. Находка добавляется к 300 ₽, её можно отключить. Перезагрузка не даёт новую попытку.</p><p>За каждые семь игровых дней начисляется карманная сумма. «Подождать месяц» переводит дату на то же число следующего месяца (или на его последний день). Оставшиеся дни сохраняются, поэтому выплаты не теряются при чередовании недели и месяца. На день рождения и Новый год бабушка дарит по 1 000 ₽ сверх еженедельной суммы: обычно это 300 + 1 000 = 1 300 ₽ за праздничный ход. Если день рождения 29 февраля, в обычный год подарок приходит 28 февраля.</p><p>Кнопка «Заработать денег»: помочь по дому — 100 ₽, полить цветы — 50 ₽, разобрать игрушки — 150 ₽. Каждое дело доступно один раз за игровую неделю и снова открывается с очередными карманными деньгами. Старый велосипед можно продать за 2 000 ₽ один раз за всю игру.</p><p>Игра автоматически сохраняется после каждого действия в этом браузере, если он разрешает локальное сохранение. Открывай одну и ту же ссылку в обычном режиме браузера. «Скачать мою игру» создаёт HTML-файл с текущим прогрессом: его можно загрузить через «Загрузить игру» на планшете или другом устройстве. Для первого открытия сайта нужен интернет. После загрузки игра сохраняется для следующих запусков без сети. Скачанная HTML-копия содержит игру, картинки и прогресс и работает без интернета. При переименовании или перемещении первоначального файла браузер может не найти прежнее сохранение — используй скачанную копию с прогрессом.</p></details>
+<label class="check"><input type="checkbox" id="set-random">Редкая находка: 100 ₽ в старой куртке</label><details><summary>Правила событий и сохранение</summary><p>На обычной неделе начиная с третьей есть шанс 12% найти 100 ₽. Между находками — минимум четыре недели. Находка добавляется к 300 ₽, её можно отключить. Перезагрузка не даёт новую попытку.</p><p>За каждые семь игровых дней начисляется карманная сумма. «Подождать месяц» переводит дату на то же число следующего месяца (или на его последний день). Оставшиеся дни сохраняются, поэтому выплаты не теряются при чередовании недели и месяца. На день рождения и Новый год бабушка дарит по 1 000 ₽ сверх еженедельной суммы: обычно это 300 + 1 000 = 1 300 ₽ за праздничный ход. Если день рождения 29 февраля, в обычный год подарок приходит 28 февраля.</p><p>Кнопка «Заработать денег»: помочь по дому — 100 ₽, полить цветы — 50 ₽, прибраться в комнате — 100 ₽. Каждое дело доступно один раз за игровую неделю и снова открывается с очередными карманными деньгами. Старый велосипед можно продать за 2 000 ₽. Иногда появляются предложения продать ненужные книги за 500 ₽ или старый небольшой LEGO за 300 ₽. Предложения меняются с игровой неделей и не меняются при перезагрузке. Каждая продажа доступна один раз за игру.</p><p>Игра автоматически сохраняется после каждого действия в этом браузере, если он разрешает локальное сохранение. Открывай одну и ту же ссылку в обычном режиме браузера. «Скачать мою игру» создаёт HTML-файл с текущим прогрессом: его можно загрузить через «Загрузить игру» на планшете или другом устройстве. Для первого открытия сайта нужен интернет. После загрузки игра сохраняется для следующих запусков без сети. Скачанная HTML-копия содержит игру, картинки и прогресс и работает без интернета. При переименовании или перемещении первоначального файла браузер может не найти прежнее сохранение — используй скачанную копию с прогрессом.</p></details>
 <p id="settings-error" role="alert" hidden></p><div class="row"><button type="submit" class="primary">Применить к игре</button><button type="button" id="restart">Начать заново</button></div><p class="small">«Применить» меняет имя, дату рождения, еженедельную сумму и события. Стартовая дата и начальные деньги используются только при новой игре.</p>
 </form></dialog>
 <div id="toast" class="toast" role="status" hidden></div>
@@ -53,7 +98,7 @@ function exampleBirth(start){let d=date(start);const day=d.getUTCDate();d.setUTC
 function config(){let start=today();return {name:'Тим',birth:'2020-02-07',start,initial:1800,weekly:300,events:true,random:true,prices:{},ages:{}}}
 const STARTER_IDS=['71828','71823','71836'];
 function starterSets(at){return STARTER_IDS.map(id=>({id,preowned:true,price:0,date:at}))}
-function fresh(c=config()){return {version:4,weekDays:0,jobsDone:{},rng:Math.floor(Math.random()*4294967296),lastLucky:-4,id:'tim-'+Date.now()+'-'+Math.random().toString(36).slice(2),updated:Date.now(),cfg:c,date:c.start,balance:c.initial,week:0,owned:starterSets(c.start),goal:null,bikeSold:false,log:[{date:c.start,text:'Начало игры',delta:c.initial}],pending:[]}}
+function fresh(c=config()){return {version:4,weekDays:0,jobsDone:{},rng:Math.floor(Math.random()*4294967296),lastLucky:-4,id:'tim-'+Date.now()+'-'+Math.random().toString(36).slice(2),updated:Date.now(),cfg:c,date:c.start,balance:c.initial,week:0,owned:starterSets(c.start),goal:null,bikeSold:false,booksSold:false,oldLegoSold:false,log:[{date:c.start,text:'Начало игры',delta:c.initial}],pending:[]}}
 const record=v=>v!==null&&typeof v==='object'&&!Array.isArray(v);
 const integer=(v,min=0,max=Number.MAX_SAFE_INTEGER)=>Number.isSafeInteger(v)&&v>=min&&v<=max;
 const validDate=s=>typeof s==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(s)&&Number.isFinite(date(s).getTime())&&iso(date(s))===s;
@@ -65,7 +110,7 @@ function valid(s){
  if(!integer(c.initial,0,1000000)||!integer(c.weekly,1,100000)||typeof c.events!=='boolean'||(c.random!==undefined&&typeof c.random!=='boolean')||!record(c.prices)||!record(c.ages)||!Object.values(c.ages).every(a=>integer(a,0,200)))return false;
  if(!integer(s.balance)||!integer(s.week)||!Array.isArray(s.owned)||!Array.isArray(s.log)||!Array.isArray(s.pending))return false;
  if(s.goal!=null&&typeof s.goal!=='string')return false;
- if(s.bikeSold!==undefined&&typeof s.bikeSold!=='boolean')return false;
+ if(['bikeSold','booksSold','oldLegoSold'].some(key=>s[key]!==undefined&&typeof s[key]!=='boolean'))return false;
  if(!s.owned.every(o=>record(o)&&typeof o.id==='string'&&integer(o.price)&&validDate(o.date)&&(o.shop===undefined||['dm','mk'].includes(o.shop))&&(o.preowned===undefined||typeof o.preowned==='boolean')))return false;
  if(new Set(s.owned.map(o=>o.id)).size!==s.owned.length)return false;
  if(!s.log.every(l=>record(l)&&validText(l.text)&&validDate(l.date)&&Number.isSafeInteger(l.delta)))return false;
@@ -94,7 +139,7 @@ function migrate(){
  state.jobsDone=record(state.jobsDone)?state.jobsDone:{};
  for(const o of starterSets(state.cfg.start)){if(!state.owned.some(p=>p.id===o.id))state.owned.push(o)}
  if(STARTER_IDS.includes(state.goal))state.goal=null;
- state.goal=state.goal??null;state.bikeSold=state.bikeSold??false;state.cfg.random=state.cfg.random??true;
+ state.goal=state.goal??null;for(const key of ['bikeSold','booksSold','oldLegoSold'])state[key]=state[key]??false;state.cfg.random=state.cfg.random??true;
  state.rng=Number.isInteger(state.rng)?state.rng:Math.floor(Math.random()*4294967296);
  state.lastLucky=Number.isInteger(state.lastLucky)?state.lastLucky:-4;
  const ui=record(state.ui)?state.ui:{};
@@ -147,9 +192,9 @@ function render(persist=true){
  const goal=CATALOG.find(p=>p.id===state.goal&&!state.owned.some(o=>o.id===p.id));$('goalbar').hidden=!goal;if(goal){const selected=goal.offers.dm||goal.offers.mk;if(!selected){$('goalbar').innerHTML=`<div><strong>Коплю: ${esc(goal.name)}</strong></div><span>Цена есть в другом магазине</span>`}else{const price=selected.price,missing=Math.max(0,price-state.balance);$('goalbar').innerHTML=`<div><strong>Коплю: ${esc(goal.name)}</strong><div class="track" role="progressbar" aria-label="Накоплено на цель" aria-valuemin="0" aria-valuemax="${price}" aria-valuenow="${Math.min(state.balance,price)}"><div class="fill" style="width:${Math.min(100,state.balance/price*100)}%"></div></div></div><span>${missing?'Осталось '+money(missing):'Можно купить!'}</span>`}}
  $('collection').innerHTML=state.owned.map(o=>{const p=CATALOG.find(p=>p.id===o.id);if(!p)return '';return `<article class="toy">${picture(p)}<h3>${esc(p.name)}</h3><p>${o.preowned?'Уже есть у Тима':money(o.price)+(o.shop?' · '+STORE_NAMES[o.shop]:'')}</p><div class="tag">${o.preowned?'Был до начала игры':esc(o.date.split('-').reverse().join('.'))}</div></article>`}).join('')||'<div class="empty"><div class="big">🧱</div><h3>Здесь будут твои наборы</h3><p>Здесь появятся твои покупки.</p></div>';
  $('logs').innerHTML=state.log.slice().reverse().map(l=>`<div class="logrow"><div>${esc(l.text)}<small>${esc(l.date.split('-').reverse().join('.'))}</small></div><strong>${l.delta>0?'+':''}${money(l.delta)}</strong></div>`).join('');
- $('weekly-label').textContent='Каждую неделю: +'+money(state.cfg.weekly);if(persist)save();else storageStatus();
+ $('weekly-label').textContent='+'+money(state.cfg.weekly);if(persist)save();else storageStatus();
 }
-function show(icon,title,html,buttons){$('story-icon').innerHTML=icon==='₽'?'<span class="ruble-coin smallcoin">₽</span>':esc(icon);$('story-title').textContent=title;$('story-body').innerHTML=html;$('story-buttons').replaceChildren();buttons.forEach((b,i)=>{const el=document.createElement('button');el.textContent=b.text;el.className=i===0?'primary':'';el.onclick=()=>{$('story').close();b.action?.()};$('story-buttons').append(el)});if(!$('story').open)$('story').showModal()}
+function show(icon,title,html,buttons,kind=''){ $('story').classList.toggle('detail-dialog',kind==='detail');$('story').classList.toggle('earnings-dialog',kind==='earnings');$('story-icon').innerHTML=icon==='₽'?'<span class="ruble-coin smallcoin">₽</span>':esc(icon);$('story-title').textContent=title;$('story-body').innerHTML=html;$('story-buttons').replaceChildren();buttons.forEach((b,i)=>{const el=document.createElement('button');el.textContent=b.text;el.className=i===0?'primary':'';el.onclick=()=>{$('story').close();b.action?.()};$('story-buttons').append(el)});if(!$('story').open)$('story').showModal()}
 function toast(text){$('toast').textContent=text;$('toast').hidden=false;clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').hidden=true,2800)}
 function add(text,delta){state.balance+=delta;state.log.push({date:state.date,text,delta})}
 function birthInYear(y){const b=date(state.cfg.birth),m=b.getUTCMonth(),day=b.getUTCDate();return new Date(Date.UTC(y,m,Math.min(day,new Date(Date.UTC(y,m+1,0)).getUTCDate()),12))}
@@ -182,23 +227,32 @@ function playPending(){
  if(!state.pending.length){render();return}const e=state.pending[0],parts=e.parts||[{text:e.label||e.text,delta:e.delta}];
  show(e.icon,e.title,`<p>${esc(e.text)}</p>${(e.summary||parts).map(p=>`<div class="income-line"><span>${esc(p.text)}</span><strong>+${money(p.delta)}</strong></div>`).join('')}<div class="income-total">Всего получишь: <strong>+${money(e.delta)}</strong></div><p class="small">В копилке будет ${money(state.balance+e.delta)}.</p>`,[{text:e.button||'В копилку',action:()=>{for(const p of parts){add(p.text,p.delta);if(p.date)state.log[state.log.length-1].date=p.date}state.pending.shift();render();playPending()}}]);
 }
-function info(id){const p=items().find(p=>p.id===id);if(!p)return;show(p.icon,'Рассмотрим набор',`${picture(p)}<p>${esc(p.name)}</p><p class="small">${esc(p.fullName)} · LEGO ${p.id}</p><div class="equation">${STORE_NAMES[p.store]}: ${money(p.price)}</div>`,[{text:'Буду копить',action:()=>{state.goal=id;render()}},{text:'Назад'}])}
+function info(id){const p=items().find(p=>p.id===id);if(!p)return;show(p.icon,'Рассмотрим набор',`<div class="detail-layout"><div class="detail-photo">${picture(p)}</div><div class="detail-copy"><p>${esc(p.name)}</p><p class="small">${esc(p.fullName)} · LEGO ${p.id}</p><div class="equation">${STORE_NAMES[p.store]}<br>${money(p.price)}</div></div></div>`,[{text:'Буду копить',action:()=>{state.goal=id;render()}},{text:'Назад'}],'detail')}
 function buy(id){
  const p=available().find(p=>p.id===id);if(!p||state.balance<p.price||state.pending.length)return;const shop=p.store;
  show(p.icon,'Купить этот набор?',`<p>${esc(p.name)}</p><p class="small">${STORE_NAMES[shop]} · LEGO ${p.id}</p><div class="equation">${money(state.balance)} − ${money(p.price)}<br>= ${money(state.balance-p.price)}</div>`,[{text:'Да, купить',action:()=>{if(state.balance<p.price||state.owned.some(o=>o.id===id))return;add('Купил: '+p.name+' · '+STORE_NAMES[shop],-p.price);state.owned.push({id,price:p.price,date:state.date,shop});if(state.goal===id)state.goal=null;offset=0;render();show('🧱','Теперь он твой!',`<p>${esc(p.name)} теперь в купленных наборах.</p>`,[{text:'К купленным наборам',action:()=>{tab='shelf';render()}},{text:'Выбрать ещё',action:()=>{tab='shop';render()}}])}},{text:'Пока подожду'}]);
 }
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});$('next').onclick=nextWeek;$('month').onclick=nextMonth;$('other').onclick=()=>{offset++;render()};$('near-budget').onclick=()=>{offset=0;render()};$('cards').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.buy)buy(b.dataset.buy);if(b.dataset.info)info(b.dataset.info);if(b.dataset.goal){state.goal=b.dataset.goal;render();toast('Цель выбрана. Можно копить!')}};
-const JOBS=[{id:'home',name:'Помочь по дому',amount:100,done:'Помог по дому',icon:'🧹'},{id:'plants',name:'Полить цветы',amount:50,done:'Полил цветы',icon:'🌿'},{id:'toys',name:'Разобрать игрушки',amount:150,done:'Разобрал игрушки',icon:'🧸'}];
+const JOBS=[{id:'home',name:'Помочь по дому',amount:100,done:'Помог по дому',icon:'🧹'},{id:'plants',name:'Полить цветы',amount:50,done:'Полил цветы',icon:'🌿'},{id:'toys',name:'Прибраться в комнате',amount:100,done:'Прибрался в комнате',icon:'🧹'}];
+const SALES=[
+ {id:'bike',flag:'bikeSold',name:'Продать старый велосипед',question:'Продать велосипед?',amount:2000,done:'Продал старый велосипед',icon:'🚲'},
+ {id:'books',flag:'booksSold',name:'Продать ненужные книги',question:'Продать книги?',amount:500,done:'Продал ненужные книги',icon:'📚',offerWeek:0},
+ {id:'oldLego',flag:'oldLegoSold',name:'Продать старый небольшой LEGO',question:'Продать старый LEGO?',amount:300,done:'Продал старый небольшой LEGO',icon:'🧱',offerWeek:2}
+];
+function saleAvailable(sale){return sale.offerWeek===undefined||state.week%4===sale.offerWeek}
 function earnings(){
  if(state.pending.length){playPending();return}
- show('₽','Заработать денег','<p class="small">Выбери дело. Каждое можно выполнить раз в неделю.</p><div class="jobs">'+JOBS.map(j=>`<button data-job="${j.id}" ${state.jobsDone[j.id]===state.week?'disabled':''}><span>${j.name}<small>${state.jobsDone[j.id]===state.week?'Готово! Снова на следующей неделе':'Один раз в неделю'}</small></span><strong>+${money(j.amount)}</strong></button>`).join('')+`<button data-job="bike" ${state.bikeSold?'disabled':''}><span>Продать старый велосипед<small>${state.bikeSold?'Уже продан':'Один раз за игру'}</small></span><strong>+${money(2000)}</strong></button></div>`,[{text:'Назад'}]);
+ const weekly=JOBS.map(j=>`<button data-job="${j.id}" ${state.jobsDone[j.id]===state.week?'disabled':''}><span>${j.name}<small>${state.jobsDone[j.id]===state.week?'Готово! Снова на следующей неделе':'Один раз в неделю'}</small></span><strong>+${money(j.amount)}</strong></button>`).join('');
+ const sales=SALES.filter(saleAvailable).map(j=>`<button data-job="${j.id}" ${state[j.flag]?'disabled':''}><span>${j.name}<small>${state[j.flag]?'Уже продано':'Один раз за игру'}</small></span><strong>+${money(j.amount)}</strong></button>`).join('');
+ show('₽','Заработать денег','<p class="small">Выбери, как пополнить копилку.</p><div class="earning-groups"><section><h3>Дела на каждую неделю</h3><div class="jobs">'+weekly+'</div></section><section><h3>Продать ненужное</h3><p class="sales-hint">Иногда здесь появляются книги и старый LEGO. Заглядывай на следующей неделе!</p><div class="jobs">'+sales+'</div></section></div>',[{text:'Назад'}],'earnings');
  $('story-body').querySelectorAll('[data-job]').forEach(b=>b.onclick=()=>earn(b.dataset.job));
 }
 function earn(id){
  if(state.pending.length)return;
- if(id==='bike'){
-  if(state.bikeSold)return;
-  show('🚲','Продать велосипед?','<p>В копилке станет на 2 000 ₽ больше.</p><p class="small">Этот велосипед можно продать только один раз.</p>',[{text:'Продать за 2 000 ₽',action:()=>{if(state.bikeSold)return;state.bikeSold=true;add('Продал старый велосипед',2000);render();earnings()}},{text:'Оставить',action:earnings}]);return;
+ const sale=SALES.find(j=>j.id===id);
+ if(sale){
+  if(state[sale.flag]||!saleAvailable(sale))return;
+  show(sale.icon,sale.question,`<p>В копилке станет на ${money(sale.amount)} больше.</p><p class="small">Эта продажа доступна только один раз за игру.</p>`,[{text:'Продать за '+money(sale.amount),action:()=>{if(state[sale.flag]||!saleAvailable(sale))return;state[sale.flag]=true;add(sale.done,sale.amount);render();earnings()}},{text:'Оставить',action:earnings}]);return;
  }
  const j=JOBS.find(j=>j.id===id);if(!j||state.jobsDone[id]===state.week)return;
  state.jobsDone[id]=state.week;add(j.done,j.amount);render();earnings();
