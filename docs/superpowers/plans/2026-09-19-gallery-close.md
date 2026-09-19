@@ -27,4 +27,4 @@ Files: `index.html`, `sw.js`, `docs/verification.md`.
   reopen and click the bottom Close button at 1024×768, 768×1024 and 390×844.
   Also inspect the longest catalogue title at 320×568. Check Chromium and WebKit;
   do not add a test suite for this reversible control change.
-- [ ] Record verification, commit, push, and check the control on GitHub Pages.
+- [x] Record verification, commit, push, and check the control on GitHub Pages.
