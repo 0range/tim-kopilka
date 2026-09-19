@@ -74,8 +74,10 @@ button.product-card{width:100%;text-align:left;font-weight:400;padding:16px;gap:
 #product{width:100%;max-width:none;height:100vh;height:100dvh;max-height:none;margin:0;border-radius:0;padding:0;overflow:hidden;background:#fff}
 #product[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto auto}
 body:has(#product[open]){overflow:hidden}
-.product-header{padding:max(20px,env(safe-area-inset-top)) 28px 12px;text-align:center}
-#product-title{font-size:clamp(23px,3vw,34px);line-height:1.2;margin:0 auto;max-width:1000px}
+.product-header{display:grid;grid-template-columns:56px minmax(0,1fr) 56px;gap:12px;align-items:center;padding:max(20px,env(safe-area-inset-top)) max(28px,env(safe-area-inset-right)) 12px max(28px,env(safe-area-inset-left));text-align:center}
+#product-close-top{grid-column:3;display:grid;place-items:center;align-self:start;width:56px;height:56px;min-height:56px;padding:0;border-radius:16px;background:#e7eddf}
+#product-close-top svg{width:28px;height:28px}
+#product-title{grid-column:2;min-width:0;overflow-wrap:anywhere;font-size:clamp(23px,3vw,34px);line-height:1.2;margin:0 auto;max-width:1000px}
 .gallery-stage{position:relative;min-height:0;width:100%;display:grid;place-items:center;touch-action:pan-y pinch-zoom;overflow:hidden;padding:12px 76px;user-select:none}
 #product-photo{display:block;width:100%;height:100%;min-height:0;object-fit:contain;pointer-events:none}
 .gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:64px;padding:0;border-radius:18px;background:#f1f4ed;font-size:38px;font-weight:400;line-height:1;z-index:1}
@@ -87,7 +89,7 @@ body:has(#product[open]){overflow:hidden}
 #product-message{font-size:17px;line-height:1.3;color:var(--muted);margin-top:5px}
 .product-footer button{font-size:24px;min-height:64px;min-width:180px}
 @media(min-width:700px) and (orientation:portrait){button.product-card{padding:13px}.product-card .card-name{font-size:18px}.product-card .price{font-size:24px}}
-@media(max-width:699px){button.product-card{padding:12px}.product-card .card-name{font-size:17px}.product-card .price{font-size:23px}.product-header{padding:20px 20px 8px}.gallery-stage{padding:8px 42px}.gallery-arrow{width:38px;height:56px;font-size:30px;border-radius:12px}#photo-prev{left:3px}#photo-next{right:3px}.product-footer{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px 16px max(18px,env(safe-area-inset-bottom))}.product-cost{grid-column:1/-1;min-width:0;margin:0;text-align:center}#product-price{font-size:28px}.product-footer button{min-width:0;font-size:22px;min-height:60px}#product-buy[hidden]+#product-close{grid-column:1/-1}.gallery-position{height:36px;font-size:15px}#photo-status{font-size:12px}}
+@media(max-width:699px){button.product-card{padding:12px}.product-card .card-name{font-size:17px}.product-card .price{font-size:23px}.product-header{grid-template-columns:48px minmax(0,1fr) 48px;gap:8px;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 8px max(16px,env(safe-area-inset-left))}#product-close-top{width:48px;height:48px;min-height:48px;border-radius:14px}#product-close-top svg{width:26px;height:26px}.gallery-stage{padding:8px 42px}.gallery-arrow{width:38px;height:56px;font-size:30px;border-radius:12px}#photo-prev{left:3px}#photo-next{right:3px}.product-footer{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px 16px max(18px,env(safe-area-inset-bottom))}.product-cost{grid-column:1/-1;min-width:0;margin:0;text-align:center}#product-price{font-size:28px}.product-footer button{min-width:0;font-size:22px;min-height:60px}#product-buy[hidden]+#product-close{grid-column:1/-1}.gallery-position{height:36px;font-size:15px}#photo-status{font-size:12px}}
 </style></head><body>
 <div class="wrap">
 <header class="topbar"><div class="identity"><div class="brand">МОЯ КОПИЛКА · ЧИТАЮ И ВЫБИРАЮ</div><h1 id="hello">Привет, Тим!</h1><div class="date-age"><span id="date"></span><span id="age"></span></div></div><div class="bank"><span class="ruble-coin" aria-label="Рублёвая монета">₽</span><div><div class="banklabel">В моей копилке</div><div class="money" id="balance" aria-live="polite"></div></div></div><button class="quiet" id="parent-open">Для папы ⚙</button></header>
@@ -98,7 +100,7 @@ body:has(#product[open]){overflow:hidden}
 </div>
 <dialog id="story" aria-labelledby="story-title"><div id="story-icon" class="dialog-icon" aria-hidden="true"></div><h2 id="story-title"></h2><div id="story-body"></div><div id="story-buttons" class="dialog-buttons"></div></dialog>
 <dialog id="product" aria-labelledby="product-title">
-<header class="product-header"><h2 id="product-title"></h2></header>
+<header class="product-header"><h2 id="product-title"></h2><button id="product-close-top" type="button" aria-label="Закрыть набор" title="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button></header>
 <div class="gallery-stage" id="gallery-stage" role="region" aria-label="Фотографии набора" aria-roledescription="галерея">
 <img id="product-photo" alt="" draggable="false">
 <button id="photo-prev" class="gallery-arrow" aria-label="Предыдущее фото">‹</button>
@@ -327,7 +329,7 @@ function buy(id){
  render();productActions();$('product-message').textContent='Куплено! Набор теперь на твоей полке.';$('product-close').focus();
 }
 $('product-buy').onclick=()=>{if(gallery)buy(gallery.id)};
-$('product-close').onclick=()=>$('product').close();
+$('product-close-top').onclick=$('product-close').onclick=()=>$('product').close();
 $('product').addEventListener('close',()=>{if($('product').open)return;gallery=null;photoRequest++;clearTimeout(photoTimer)});
 $('photo-prev').onclick=()=>{if(gallery)showPhoto(gallery.index-1)};
 $('photo-next').onclick=()=>{if(gallery)showPhoto(gallery.index+1)};

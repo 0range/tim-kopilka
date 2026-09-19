@@ -17,13 +17,13 @@ close action. Implement inline in this session because this is one small change.
 
 Files: `index.html`, `sw.js`, `docs/verification.md`.
 
-- [ ] Add `button#product-close-top` with an inline decorative SVG cross and
+- [x] Add `button#product-close-top` with an inline decorative SVG cross and
   `aria-label="Закрыть набор"` beside `#product-title`. Use a three-column header
   grid with symmetric button-width outer columns and a wrapping central title.
-- [ ] Share the existing close handler:
+- [x] Share the existing close handler:
   `$('product-close-top').onclick=$('product-close').onclick=()=>$('product').close();`
-- [ ] Bump shell cache from `tim-kopilka-shell-v3` to `tim-kopilka-shell-v4`.
-- [ ] Use Playwright CLI to open a card, inspect header geometry, click the cross,
+- [x] Bump shell cache from `tim-kopilka-shell-v3` to `tim-kopilka-shell-v4`.
+- [x] Use Playwright CLI to open a card, inspect header geometry, click the cross,
   reopen and click the bottom Close button at 1024×768, 768×1024 and 390×844.
   Also inspect the longest catalogue title at 320×568. Check Chromium and WebKit;
   do not add a test suite for this reversible control change.
